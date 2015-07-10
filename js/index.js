@@ -8,19 +8,19 @@ $(function() {
 	$('#entry').submit(function(e) {
 		e.preventDefault();
 
-		// Save form submit to ENTRY, add to ENTRIES array
+		// Save form submit to ENTRY, add ENTRY to ENTRIES array
 		var entry = parseFloat( $('input#newEntry').val() );
 		entries.push(entry);
-		console.log(entries);
+		console.log('entries: ' + entries);
 
-		// Add ENTRY to the ticker tape
+		// Print ENTRY to the ticker tape
 		$('tbody#entries').append('<tr><td colspan="2">$' + entry.toFixed(2) + '</td></tr>');
 
 		// Add ENTRY to TOTAL
     total = total + entry;
 		console.log('total: ' + total);
 
-		// Print TOTAL in th#total
+		// Print TOTAL
 		$('th#total').html( '$' + total.toFixed(2) );
 
 		// Reset form
