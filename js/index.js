@@ -1,6 +1,6 @@
 $(function() {
 
-	// Prime ENTRIES array and TOTAL
+	// Prime TOTAL variable, make it a number
 	var total = parseFloat(0);
 
 	// Override form submit from refreshing page
