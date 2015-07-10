@@ -1,19 +1,17 @@
 $(function() {
 
 	// Prime ENTRIES array and TOTAL
-	var entries = [];
 	var total = parseFloat(0);
 
 	// Override form submit from refreshing page
 	$('#entry').submit(function(e) {
 		e.preventDefault();
 
-		// Save form submit to ENTRY, add ENTRY to ENTRIES array
+		// Save form submit to ENTRY
 		var entry = parseFloat( $('input#newEntry').val() );
-		entries.push(entry);
-		console.log('entries: ' + entries);
+		console.log('entry: ' + entry);
 
-		// Print ENTRY to the ticker tape
+		// Print ENTRY to the bottom of the ticker tape
 		$('tbody#entries').append('<tr><td colspan="2">$' + entry.toFixed(2) + '</td></tr>');
 
 		// Add ENTRY to TOTAL
