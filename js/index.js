@@ -1,57 +1,29 @@
-// HINT:
-//
-// When you press Enter to submit a new cash register entry, the form will
-// actually submit data and reload the page. You don't want to reload the page. It
-// messes up the running tab. So in order to prevent normal form submission,
-// make sure your form submit handler looks like this:
-//
-	// $('#entry').submit(function(e) {
-	// 		e.preventDefault();
-	//      .... do other stuff here ....
-	//
-	// });
-
-
 $(function() {
 
-	// Prime 'entries' array
+	// Prime ENTRIES array and TOTAL
 	var entries = [];
+	var total = parseFloat(0);
 
 	// Override form submit from refreshing page
 	$('#entry').submit(function(e) {
-			e.preventDefault();
+		e.preventDefault();
 
-			// Save form submit to 'entries' array
-			var entry = $('input#newEntry').val();
-			entries.push(parseFloat(entry));
-			console.log(entries);
+		// Save form submit to ENTRY, add to ENTRIES array
+		var entry = parseFloat( $('input#newEntry').val() );
+		entries.push(entry);
+		console.log(entries);
 
-			// Reset form
-			$('#entry').trigger('reset');
+		// Add ENTRY to the ticker tape
+		$('tbody#entries').append('<tr><td colspan="2">$' + entry.toFixed(2) + '</td></tr>');
 
-			// Build 'entries' html in a variable 'tape'
-			var tape = '';
-			for( var j = 0 ; j < entries.length; j++) {
-				tape = tape + '<tr><td colspan="2">$' + entries[j].toFixed(2) + '</td></tr>';
-			}
-			console.log(tape);
+		// Add ENTRY to TOTAL
+    total = total + entry;
+		console.log('total: ' + total);
 
-			// Insert 'tape' html in tbody#entries
-			$('tbody#entries').html(tape);
+		// Print TOTAL in th#total
+		$('th#total').html( '$' + total.toFixed(2) );
 
-			// Sum 'entries' array
-			// var sum = 0;
-      // for( var j = 0 ; j < rankings.length; j++) {
-      //   sum = sum + rankings[j];
-      //   console.log('sum: ' + sum);
-			// }
-
-
+		// Reset form
+		$('#entry').trigger('reset');
 	});
-
-		// pull code from carousel
-	// Save array total to variable 'total'
-	// Print 'total' in th#total
-
-
 });
