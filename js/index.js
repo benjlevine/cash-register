@@ -1,7 +1,7 @@
 $(function() {
 
 	// Prime TOTAL variable, make it a number
-	var total = parseFloat(0);
+	var total = 0.0;
 
 	// Override form submit from refreshing page
 	$('#entry').submit(function(e) {
