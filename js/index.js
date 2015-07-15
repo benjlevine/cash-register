@@ -8,18 +8,21 @@ $(function() {
 		e.preventDefault();
 
 		// Save form submit to ENTRY
-		var entry = parseFloat( $('input#newEntry').val() );
+		var inputValue = $('input#newEntry').val();
+		console.log('inputValue: ' + inputValue)
+		var entry = parseFloat(inputValue);
 		console.log('entry: ' + entry);
 
 		// Print ENTRY to the bottom of the ticker tape
 		$('tbody#entries').append('<tr><td colspan="2">$' + entry.toFixed(2) + '</td></tr>');
 
 		// Add ENTRY to TOTAL
+		console.log('total: ' + total);
     total = total + entry;
 		console.log('total: ' + total);
 
 		// Print TOTAL
-		$('th#total').html( '$' + total.toFixed(2) );
+		$('th#total').html('$' + total.toFixed(2));
 
 		// Reset form
 		$('#entry').trigger('reset');
